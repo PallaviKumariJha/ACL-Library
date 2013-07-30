@@ -1,0 +1,30 @@
+package connectivity;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class InsertRecord {
+  
+	public boolean insert(String fname,String lname,String mname,String uid,String passwd) throws Exception
+	{
+		boolean retval=false;
+		Statement stmt=Connect.connct();
+		String query="insert into users values('"+fname+"','"+mname+"','"+lname+"','"+uid+"','"+passwd+"');";
+		int a=stmt.executeUpdate(query);
+		if(a>0)retval=true;
+		return retval;
+	}
+	public static void main(String[] args) throws ClassNotFoundException, SQLException
+	{
+		//boolean retval=false;
+		Statement stmt=Connect.connct();
+		String query="insert into users values('fname1','mname1','lname1','uid1','passwd1');";
+		int a=stmt.executeUpdate(query);
+		System.out.println(a);
+	//	if(a>0)retval=true;
+	//	return retval;
+		
+	}
+
+}
